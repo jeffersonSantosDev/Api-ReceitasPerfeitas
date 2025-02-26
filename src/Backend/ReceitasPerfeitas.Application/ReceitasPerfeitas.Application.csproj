@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Shared\ReceitasPerfeitas.Communication\ReceitasPerfeitas.Communication.csproj" />
     <ProjectReference Include="..\..\Shared\ReceitasPerfeitas.Exceptions\ReceitasPerfeitas.Exceptions.csproj" />
     <ProjectReference Include="..\ReceitasPerfeitas.Domain\ReceitasPerfeitas.Domain.csproj" />
