@@ -1,8 +1,10 @@
 # README - ReceitaPerfeita API
 # Introduction
-ReceitaPerfeita API é um projeto desenvolvido em .NET Core para gerenciamento de receitas culinárias. O objetivo principal é permitir aos usuários o cadastro, criação, edição, e exclusão de receitas, bem como fornecer informações detalhadas sobre cada uma, como título, ingredientes, instruções, tempo de preparo, e nível de dificuldade. A API integra recursos avançados, como autenticação via Google OAuth, integração com o Chat GPT para geração automática de receitas, além de ser hospedada no Microsoft Azure para produção.
+A **ReceitaPerfeita API** é uma aplicação robusta e escalável desenvolvida em **.NET Core** para o gerenciamento completo de receitas culinárias. A API permite que os usuários se cadastrem, criem, editem e excluam receitas, oferecendo funcionalidades avançadas como a inclusão de título, ingredientes, instruções, tempo de preparo e nível de dificuldade. 
 
-Este projeto visa fornecer não apenas uma API funcional, mas também servir como base para compartilhar boas práticas de desenvolvimento de software e as melhores metodologias ágeis, como Scrum, DevOps, CI/CD e Domain-Driven Design (DDD).
+Além disso, a ReceitaPerfeita API se destaca pela integração com recursos modernos, como **autenticação via Google OAuth**, **integração com o Chat GPT** para geração automática de receitas baseadas em ingredientes fornecidos, e **hospedagem no Microsoft Azure**, garantindo desempenho e confiabilidade em ambientes de produção.
+
+Este projeto não só visa entregar uma API funcional, mas também serve como um exemplo prático de boas práticas de desenvolvimento e padrões de arquitetura de software. Através da implementação de metodologias ágeis como **Scrum**, **DevOps**, **CI/CD**, e o design centrado no **Domain-Driven Design (DDD)**, buscamos otimizar tanto o processo de desenvolvimento quanto a qualidade do código, proporcionando uma experiência completa e eficiente para os desenvolvedores.
 
 # Getting Started
 Para rodar a ReceitaPerfeita API localmente, siga os passos abaixo:
