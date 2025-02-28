@@ -13,5 +13,5 @@ namespace ReceitasPerfeitas.Application.UseCases.User.Register
             RuleFor(user => user.Email).EmailAddress().WithMessage(ResourceMessageException.EMAIL_INVALID);
             RuleFor(user => user.Password.Length).GreaterThanOrEqualTo(6).WithMessage(ResourceMessageException.PASSWORD_EMPTY);
         }
-    }
+    } 
 }
