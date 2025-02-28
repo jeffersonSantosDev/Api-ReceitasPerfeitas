@@ -1,5 +1,7 @@
 using ReceitasPerfeitas.API.Filters;
 using ReceitasPerfeitas.API.Middleware;
+using ReceitasPerfeitas.Infrastructure.DependencyInjectionExtension;
+using ReceitasPerfeitas.Application.DependencyInjectionExtension;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,11 @@ builder.Services.AddSwaggerGen();
 
 //injetando classe de filtro de exceção 
 builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
+
+//Registrando injeção de dependências
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure();
+
 
 var app = builder.Build();
 

@@ -1,36 +1,36 @@
-﻿using ReceitasPerfeitas.Application.Services.AutoMapper;
+﻿using AutoMapper;
+using ReceitasPerfeitas.Application.Services.AutoMapper;
 using ReceitasPerfeitas.Application.Services.Cryptography;
 using ReceitasPerfeitas.Communication.Request;
 using ReceitasPerfeitas.Communication.Response;
-using ReceitasPerfeitas.Exceptions.ExceptionsBase;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using ReceitasPerfeitas.Domain.Repositories;
+using ReceitasPerfeitas.Exceptions.ExceptionsBase; 
 namespace ReceitasPerfeitas.Application.UseCases.User.Register
 {
-    public class RegisterUserUseCase
+    public class RegisterUserUseCase: IRegisterUserUseCase
     {
-        public ResponseRegisterUserJson Execute(RequestRegisterUserJson request)
+        private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
+
+        public RegisterUserUseCase(IUserRepository userRepository, IMapper mapper)
+        {
+            _userRepository = userRepository;
+            _mapper = mapper;
+        }
+        public async Task<ResponseRegisterUserJson> Execute(RequestRegisterUserJson request)
         {
             //Validar a request
             Validate(request);
+             
 
-            //Mapear a request en uma entidade 
-            var autoMapper = new AutoMapper.MapperConfiguration(opstions =>
-            {
-                opstions.AddProfile(new AutoMappingr());
-            }).CreateMapper();
-
-            var use = autoMapper.Map<Domain.Entities.User>(request);
+            var use = _mapper.Map<Domain.Entities.User>(request);
 
 
             //Criptografia da senha 
             var passwordEncripted = new PasswordEncripter();
             use.Password = passwordEncripted.Encript(request.Password);
 
+            await _userRepository.Add(use);
 
             //Salvar no Banco de dados
             return new ResponseRegisterUserJson { Name =  request.Name};

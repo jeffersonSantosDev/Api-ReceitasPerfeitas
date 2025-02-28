@@ -15,6 +15,7 @@
     <ProjectReference Include="..\..\Shared\ReceitasPerfeitas.Communication\ReceitasPerfeitas.Communication.csproj" />
     <ProjectReference Include="..\..\Shared\ReceitasPerfeitas.Exceptions\ReceitasPerfeitas.Exceptions.csproj" />
     <ProjectReference Include="..\ReceitasPerfeitas.Application\ReceitasPerfeitas.Application.csproj" />
+    <ProjectReference Include="..\ReceitasPerfeitas.Infrastructure\ReceitasPerfeitas.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
