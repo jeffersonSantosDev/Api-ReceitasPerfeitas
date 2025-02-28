@@ -1,10 +1,10 @@
-#README - ReceitaPerfeita API
-#Introduction
+# README - ReceitaPerfeita API
+# Introduction
 ReceitaPerfeita API é um projeto desenvolvido em .NET Core para gerenciamento de receitas culinárias. O objetivo principal é permitir aos usuários o cadastro, criação, edição, e exclusão de receitas, bem como fornecer informações detalhadas sobre cada uma, como título, ingredientes, instruções, tempo de preparo, e nível de dificuldade. A API integra recursos avançados, como autenticação via Google OAuth, integração com o Chat GPT para geração automática de receitas, além de ser hospedada no Microsoft Azure para produção.
 
 Este projeto visa fornecer não apenas uma API funcional, mas também servir como base para compartilhar boas práticas de desenvolvimento de software e as melhores metodologias ágeis, como Scrum, DevOps, CI/CD e Domain-Driven Design (DDD).
 
-#Getting Started
+# Getting Started
 Para rodar a ReceitaPerfeita API localmente, siga os passos abaixo:
 
 #1. Installation Process
@@ -12,7 +12,7 @@ Clone este repositório:
 git clone https://github.com/seu-usuario/receitaperfeita-api.git
 
 
-#2. Software Dependencies
+# 2. Software Dependencies
 Certifique-se de ter o seguinte instalado:
 
 .NET SDK 6.0 ou superior
@@ -38,17 +38,17 @@ Execute a aplicação com o seguinte comando:
 
 
 dotnet run
-#3. Running Unit Tests
+# 3. Running Unit Tests
 Para rodar os testes unitários e garantir que todas as funcionalidades estão funcionando corretamente:
 
 
-#dotnet test
+# dotnet test
 Os testes incluem validações para garantir a consistência das regras de negócio e a integridade das receitas cadastradas.
 
-#Contribute
+# Contribute
 Contribuições são bem-vindas! Se você deseja melhorar a ReceitaPerfeita API, siga os seguintes passos:
 
-#Fork o repositório.
+# Fork o repositório.
 Crie uma branch para a sua modificação (git checkout -b minha-feature).
 Faça as alterações desejadas e commit as mudanças.
 Envie um pull request para a branch principal.
