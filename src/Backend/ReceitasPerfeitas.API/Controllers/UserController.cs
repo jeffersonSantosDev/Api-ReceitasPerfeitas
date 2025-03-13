@@ -10,19 +10,21 @@ namespace ReceitasPerfeitas.API.Controllers
     [Route("[controller]")]
     [ApiController]
     public class UserController : ControllerBase
-    { 
-        public UserController( )
-        { 
+    {
+        private readonly IRegisterUserUseCase _registerUserUseCase;
+        public UserController(IRegisterUserUseCase registerUserUseCase)
+        {
+            _registerUserUseCase = registerUserUseCase;
         }
 
 
         [HttpPost]
         [ProducesResponseType(typeof(ResponseRegisterUserJson),StatusCodes.Status201Created)]
-        public IActionResult Register(RequestRegisterUserJson request)
+        public async Task<IActionResult> Register(RequestRegisterUserJson request)
         { 
-            //var result = _registerUserUseCase.Execute(request);
+            var result = await _registerUserUseCase.Execute(request);
 
-            return Created(string.Empty, 8);
+            return Created(string.Empty, result);
         }
     }
      

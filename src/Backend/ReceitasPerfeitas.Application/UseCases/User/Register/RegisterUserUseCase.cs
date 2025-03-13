@@ -11,28 +11,36 @@ namespace ReceitasPerfeitas.Application.UseCases.User.Register
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
+        private readonly PasswordEncripter _passwordEncripter;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public RegisterUserUseCase(IUserRepository userRepository, IMapper mapper)
+        public RegisterUserUseCase(
+            IUserRepository userRepository,
+            IMapper mapper,
+            IUnitOfWork unitOfWork,
+            PasswordEncripter passwordEncripter)
         {
             _userRepository = userRepository;
             _mapper = mapper;
+            _passwordEncripter = passwordEncripter;
+            _unitOfWork = unitOfWork;
         }
         public async Task<ResponseRegisterUserJson> Execute(RequestRegisterUserJson request)
         {
             //Validar a request
             Validate(request);
              
-
+            //mapeando com Mapper
             var use = _mapper.Map<Domain.Entities.User>(request);
 
+            //Criptografia da senha  
+            use.Password = _passwordEncripter.Encript(request.Password);
 
-            //Criptografia da senha 
-            var passwordEncripted = new PasswordEncripter();
-            use.Password = passwordEncripted.Encript(request.Password);
-
+            //Prepara os dados para se salvo no Banco de dados
             await _userRepository.Add(use);
 
-            //Salvar no Banco de dados
+            await _unitOfWork.Commit();
+
             return new ResponseRegisterUserJson { Name =  request.Name};
         }
 

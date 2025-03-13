@@ -15,10 +15,11 @@ builder.Services.AddSwaggerGen();
 
 //injetando classe de filtro de exceção 
 builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
+ 
 
 //Registrando injeção de dependências
 builder.Services.AddApplication();
-builder.Services.AddInfrastructure();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 
 var app = builder.Build();
