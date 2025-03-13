@@ -50,6 +50,7 @@ namespace ReceitasPerfeitas.Application.UseCases.User.Register
 
             var result = validator.Validate(request);
 
+
             var existemailUser = await _userRepository.ExistActiveUserWithEmail(request.Email);
             if (existemailUser)
                 result.Errors.Add(new FluentValidation.Results.ValidationFailure(string.Empty, ResourceMessageException.EMAIL_ALREDY_REGISTERED));
@@ -60,7 +61,6 @@ namespace ReceitasPerfeitas.Application.UseCases.User.Register
                 var erroMessages = result.Errors.Select(e => e.ErrorMessage).ToList();
 
                 throw new ErroOnValidationException(erroMessages);
-
             }
         }
     }
