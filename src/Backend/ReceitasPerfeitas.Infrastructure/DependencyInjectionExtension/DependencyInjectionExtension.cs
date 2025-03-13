@@ -16,7 +16,7 @@ namespace ReceitasPerfeitas.Infrastructure.DependencyInjectionExtension
 {
     public static class DependencyInjectionExtension
     {
-        public static void AddInfrastructure(this IServiceCollection services, IConfiguration configurantion)
+        public static void AddInfrastructure(this IServiceCollection services, IConfiguration configurantion )
         {
             var databaseType = configurantion.GetConnectionString("DatabaseType");
 

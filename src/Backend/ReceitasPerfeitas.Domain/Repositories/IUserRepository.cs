@@ -11,6 +11,6 @@ namespace ReceitasPerfeitas.Domain.Repositories
     {
 
         Task Add(User user);
-        Task ExistActiveUserWithEmail(string email);
+        Task<bool> ExistActiveUserWithEmail(string email);
     }
 }

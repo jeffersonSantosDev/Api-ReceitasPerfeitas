@@ -9,9 +9,16 @@ namespace ReceitasPerfeitas.Application.Services.Cryptography
 {
     public class PasswordEncripter
     {
+        private readonly string _additionalkey;
+        public PasswordEncripter(string additionalkey)
+        {
+            _additionalkey = additionalkey;
+        }
         public string Encript(string password)
         {
-            var bytes = Encoding.UTF8.GetBytes(password);
+            var newPassword = $"{password}{_additionalkey}";
+
+            var bytes = Encoding.UTF8.GetBytes(_additionalkey);
             var hashBytes = SHA512.HashData(bytes);
 
             return StringBytes(hashBytes);

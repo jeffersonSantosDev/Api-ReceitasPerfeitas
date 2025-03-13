@@ -1,9 +1,9 @@
-﻿using AutoMapper;
-using ReceitasPerfeitas.Application.Services.AutoMapper;
+﻿using AutoMapper; 
 using ReceitasPerfeitas.Application.Services.Cryptography;
 using ReceitasPerfeitas.Communication.Request;
 using ReceitasPerfeitas.Communication.Response;
 using ReceitasPerfeitas.Domain.Repositories;
+using ReceitasPerfeitas.Exceptions;
 using ReceitasPerfeitas.Exceptions.ExceptionsBase; 
 namespace ReceitasPerfeitas.Application.UseCases.User.Register
 {
@@ -28,7 +28,7 @@ namespace ReceitasPerfeitas.Application.UseCases.User.Register
         public async Task<ResponseRegisterUserJson> Execute(RequestRegisterUserJson request)
         {
             //Validar a request
-            Validate(request);
+            await Validate(request);
              
             //mapeando com Mapper
             var use = _mapper.Map<Domain.Entities.User>(request);
@@ -44,11 +44,16 @@ namespace ReceitasPerfeitas.Application.UseCases.User.Register
             return new ResponseRegisterUserJson { Name =  request.Name};
         }
 
-        private void Validate(RequestRegisterUserJson request)
+        private async Task Validate(RequestRegisterUserJson request)
         {
             var validator = new RegisterUserValidator();
 
             var result = validator.Validate(request);
+
+            var existemailUser = await _userRepository.ExistActiveUserWithEmail(request.Email);
+            if (existemailUser)
+                result.Errors.Add(new FluentValidation.Results.ValidationFailure(string.Empty, ResourceMessageException.EMAIL_ALREDY_REGISTERED));
+
 
             if (result.IsValid == false)
             {

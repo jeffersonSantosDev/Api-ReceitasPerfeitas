@@ -18,7 +18,7 @@ builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)))
  
 
 //Registrando injeção de dependências
-builder.Services.AddApplication();
+builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
 
 

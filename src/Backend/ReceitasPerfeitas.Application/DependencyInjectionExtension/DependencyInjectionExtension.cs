@@ -3,6 +3,7 @@ using ReceitasPerfeitas.Application.Services.AutoMapper;
 using ReceitasPerfeitas.Application.Services.Cryptography;
 using ReceitasPerfeitas.Application.UseCases.User.Register;
 using ReceitasPerfeitas.Domain.Repositories;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,10 @@ namespace ReceitasPerfeitas.Application.DependencyInjectionExtension
 {
     public static class DependencyInjectionExtension
     {
-        public static void AddApplication(this IServiceCollection services)
+        public static void AddApplication(this IServiceCollection services, IConfiguration configurantion)
         {
             AddAutoMapper(services);
-            AddPasswordEncripter(services);
+            AddPasswordEncripter(services,configurantion);
             AddUseCases(services);           
         }
 
@@ -32,9 +33,11 @@ namespace ReceitasPerfeitas.Application.DependencyInjectionExtension
         {
             services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
         }
-        private static void AddPasswordEncripter(IServiceCollection services)
+        private static void AddPasswordEncripter(IServiceCollection services, IConfiguration configurantion)
         {
-            services.AddScoped(option => new PasswordEncripter());
+            var addtionalKey = configurantion.GetSection("Settings:Password:AddtionalKey").Value;
+
+            services.AddScoped(option => new PasswordEncripter(addtionalKey!));
         }
     }
 }

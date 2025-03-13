@@ -61,6 +61,15 @@ namespace ReceitasPerfeitas.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Email already registered..
+        /// </summary>
+        public static string EMAIL_ALREDY_REGISTERED {
+            get {
+                return ResourceManager.GetString("EMAIL_ALREDY_REGISTERED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The e-mail must not be empty..
         /// </summary>
         public static string EMAIL_EMPTY {
